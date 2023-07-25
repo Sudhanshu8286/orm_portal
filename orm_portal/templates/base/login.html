@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+{% load static %}
+
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Login screen</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="{% static 'assets/css/login.css' %}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="Login">
+    <form method="post">
+		{% csrf_token %}
+      <label for="Login-email">E-mail</label>
+    	{{ form.username }}
+      <label for="Login-password">Password</label>
+       {{form.password}}
+      <button type="submit" class="btn"><span>Log in</span></button>
+      
+    </form>
+</div>
+<!-- partial -->
+  
+</body>
+</html>

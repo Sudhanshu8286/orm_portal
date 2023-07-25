@@ -1,0 +1,43 @@
+{% include 'base/header.html' %}
+{% block content %}
+<h3 class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"> 
+    <i class="fa fa-medkit" style="color: rgb(129, 129, 255);">   Pre Clinic</i>
+  </h3>
+<div class="col-sm-8 offset-2">
+    <h4 class="text-center alert alert-info">Doctors Available</h4>
+    {% if doct %}
+        <h4 class="alert alert-success">Doctors List</h4>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Doctor Name</th>
+                <th scope="col">Doctor Specialisation</th>
+                <th scope="col">Doctor Contact Number</th>
+                <th scope="col">Doctor Location</th>
+                <th scope="col">Action</th>
+
+              </tr>
+            </thead>
+            <tbody>
+            {% for d in doct %}
+              <tr>
+                <td>{{d.Doctor_Name}}</td>
+                <td>{{d.Doctor_Specialisation}}</td>
+                <td>{{d.Doctor_Contact_Number}}</td>
+                <td>{{d.Doctor_Location}}</td>
+                <td>
+                  <a href="{% url 'updatedatadoc' d.id %}" class="btn btn-warning btn-sm">Edit</a>
+                  <form action="{% url 'deletedatadoc' d.id %}" method="POST" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger" value="delete">
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+    {% else %}
+        <h4 class="text-center alert alert-warning">No Records Found</h4>
+    {% endif %}
+</div>
+{% endblock %}

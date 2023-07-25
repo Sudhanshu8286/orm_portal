@@ -1,0 +1,50 @@
+{% include 'base/header.html' %}
+{% block content %}
+<h3 class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"> 
+  <i class="fa fa-medkit" style="color: rgb(129, 129, 255);">   Pre Clinic</i>
+</h3>
+<body style="background-color: rgb(239, 255, 255);">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-3">
+            <h4 class="text-center alert alert-info">Deals Done</h4>
+            
+            <form action="{% url 'deal' %}" method="POST">
+            {% csrf_token %}
+            <label for="doctor">Doctor Name:</label>
+            <select class="btn btn-secondary dropdown-toggle" id="doctor" name="Doctor_Name" required>
+              {% for doctor in doctors %}
+                <option value="{{ doctor.id }}">{{ doctor.Doctor_Name }}</option>
+              {% endfor %}
+            </select>
+            <br><br>
+
+            <label for="product">Product Name:</label>
+            <select class="btn btn-secondary dropdown-toggle" id="product" name="Product_name" required>
+              {% for product in products %}
+                <option value="{{ product.id }}">{{ product.Product_name }}</option>
+              {% endfor %}
+            </select>
+            <br><br>
+
+            <label for="Quantity">Enter Quantity:</label>
+            <input type="number" class="form-control" id="number" name="Quantity" required>
+            <br>
+
+            <label for="Entered_by">Entered_by:</label>
+            <input type="text" class="form-control" id="Entered_by" name="Entered_by" required>
+            <br>
+
+            <label for="Date">Date</label>
+            <input type="date" class="form-control" id="Date" name="Date" required>
+            <br>
+
+            
+            <input type="submit" class="btn btn-primary w-100" type="submit" value="Done ">
+           
+          </form>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}

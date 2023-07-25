@@ -1,0 +1,29 @@
+{% include 'base/header.html' %}
+{% block content %} 
+<h3 class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"> 
+  <i class="fa fa-medkit" style="color: rgb(129, 129, 255);">   Pre Clinic</i>
+</h3>
+<body style="background-color: rgb(239, 255, 255);">
+  <div class="col-sm-10 offset-1" style="background-color:rgb(188, 217, 221);">
+    <h1 class="text-center alert alert-info">Deals Done List</h1>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Sr no</th>
+        <th>Total Deals Done</th>
+        <th>Employee Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in deals_data %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ data.total_deals }}</td>
+          <td>{{ emp }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</body>
+{% endblock %}

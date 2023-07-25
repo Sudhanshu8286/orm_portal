@@ -1,0 +1,30 @@
+{% include 'base/header.html' %}
+{% block content %}
+<h3 class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"> 
+    <i class="fa fa-medkit" style="color: rgb(129, 129, 255);">   Pre Clinic</i>
+  </h3>
+<body style="background-color: rgb(239, 255, 255);">
+    {% if object %}
+    <div class="container">
+        <h4 class="text-align alert alert-success" >Today's Appointment</h4>
+        <div class="row">
+            {% for obj in object %}
+            <div class="col-lg-3">
+                <div class="card bg-info" style="min-height:200px; cursor:pointer;">
+                    <div class="card-body">
+                        <p>Doctor Name:<a>{{ obj.Doctor_Name.Doctor_Name }}</a></p>
+                        <p>Date:{{ obj.Date_of_Schedule }}</p>
+                        <p>Time:<b></Time:b>{{ obj.Time_of_Schedule }}</b></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <div class="container">
+        <h4 class="text-align alert alert-warning">No appointments Today</h4>
+    </div>
+    {% endif %}
+</body>
+{% endblock %}

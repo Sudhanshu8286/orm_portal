@@ -1,0 +1,14 @@
+{% include 'base/header.html' %}
+{% block content %} 
+<h3 class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"> 
+    <i class="fa fa-medkit" style="color: rgb(129, 129, 255);">  Pre Clinic</i>
+  </h3>
+  <body style="background-color: rgb(239, 255, 255);">
+    <h1 class="text-center alert alert-info col-sm-10 offset-1">Deals Done List</h1>
+        <form method="post" action="{% url 'dealsview' %}" style="margin-left:40%;">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Submit</button>        
+        </form>
+</body>
+{% endblock %} 

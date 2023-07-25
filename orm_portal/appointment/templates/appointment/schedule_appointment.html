@@ -1,0 +1,42 @@
+{% include 'base/header.html' %}
+{% block content %}
+<h3 class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"> 
+  <i class="fa fa-medkit" style="color: rgb(129, 129, 255);">   Pre Clinic</i>
+</h3>
+<body style="background-color: rgb(239, 255, 255);">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-3">
+            <h4 class="text-center alert alert-info">Schedule Appointment Here</h4>
+            
+            <form action="{% url 'schedule' %}" method="POST">
+      
+            {% csrf_token %}
+            <label for="doctor">Doctor Name</label>
+            <select class="btn btn-secondary dropdown-toggle" id="doctor" name="Doctor_Name" required>
+              {% for doctor in doctors %}
+                <option value="{{ doctor.id }}">{{ doctor.Doctor_Name }}</option>
+              {% endfor %}
+            </select>
+            <br><br>
+
+            <label for="Date_of_Schedule">Date of Schedule</label>
+            <input type="date" class="form-control" id="date" name="Date_of_Schedule" required>
+            <br>
+
+            <label for="Time_of_Schedule">Time of Schedule</label>
+            <input type="time" class="form-control" id="time" name="Time_of_Schedule" required>
+            <br>
+            
+            <label for="Entered_by ">Entered by</label>
+            <input type="text" class="form-control" id="time" name="Entered_by" required>
+            <br>
+            
+            <input type="submit" class="btn btn-primary w-100" type="submit" value="Schedule Appointment">
+            
+          </form>
+        </div>
+    </div>
+</div>  
+</body>
+{% endblock %}
